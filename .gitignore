@@ -1,2 +1,4 @@
 *.png
 *.out
+out_inv_*
+out_reachable_*
