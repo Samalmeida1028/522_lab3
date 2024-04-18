@@ -32,7 +32,7 @@ end
 sys1.add_label(tau);
 
 // controls the size of the partitions (i.e., the level of abstraction)
-pc:=0.817;
+pc:=0.531;
 
 // set up partitioning of state space for the two variables t and x
 sys1.set_refine_constraints((time,pc),(x,pc),tau);
