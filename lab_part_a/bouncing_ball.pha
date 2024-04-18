@@ -12,7 +12,7 @@ end
 
 // --------------------- Analysis  begin-------------------------------------
 bball.add_label(tau);
-pc:=0.648;
+pc:=0.856;
 bball.set_partition_constraints((x,pc),(v,pc),tau); 
 
 reach=bball.reachable;  // reached part of state space

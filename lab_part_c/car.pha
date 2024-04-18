@@ -15,7 +15,7 @@ end
 
 // --------------------- Analysis  begin-------------------------------------
 vroom.add_label(tau);
-pc:=6.490;
+pc:=8.570;
 vroom.set_partition_constraints((x,pc),(v,pc),tau); 
 
 reach=vroom.reachable;  // reached part of state space

@@ -1,0 +1,22 @@
+PHAVerLite 0.6: starting
+  Parsing file lab_part_b/heater.pha
+  Computing reachable states of sys1
+  Time in get_reach_set: 0.113 secs
+
+  Printing symb. states in 84 locations in generator floating point raw format.
+  -----------------------------------------------------------------------------
+
+
+  Time in print_gen_fp_raw: 0.016 secs
+  ------------------------------------
+
+
+  Printing symb. states in 107 locations in generator floating point raw format.
+  ------------------------------------------------------------------------------
+
+
+  Time in print_gen_fp_raw: 0.004 secs
+  ------------------------------------
+
+  Time in file lab_part_b/heater.pha: 0.136 secs
+Time in PHAVerLite: 0.136 secs
