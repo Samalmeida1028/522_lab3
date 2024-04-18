@@ -1,0 +1,48 @@
+// ----------------------------------------------------------
+// Hybrid System Example: Modified model
+// ----------------------------------------------------------
+
+// ----------------------------------------------------------
+// System Description
+// ----------------------------------------------------------
+automaton sys1
+
+        contr_var: time, x;  // the two variables of the automaton, time and x
+        synclabs: raise, lower;     // "a" is a label for transitions
+
+        // --------------------------------------------------
+        // Locations and transitions
+        // --------------------------------------------------
+        loc cool: while x>=18 & 0<=time & time<=5 wait {x' == -0.1*x & time' == 1};
+              when x <= 19 sync raise do {time'==time & x'==x} goto heat;
+        
+        loc heat: while x<=22 & 0<=time & time<=5 wait {x' == 5 - 0.1*x & time' == 1};
+              when x >= 21 sync lower do {time'==time & x'==x} goto cool;
+
+        // --------------------------------------------------
+        // Initial state of automaton
+        // --------------------------------------------------
+        initially: cool & time == 0 & x == 22;
+end
+
+// ----------------------------------------------------------
+// Define Partitioning
+// ----------------------------------------------------------
+// Add a new label for transitions introduced between partitions. Don't need to change this.
+sys1.add_label(tau);
+
+// controls the size of the partitions (i.e., the level of abstraction)
+pc:=0.596;
+
+// set up partitioning of state space for the two variables t and x
+sys1.set_refine_constraints((time,pc),(x,pc),tau);
+
+// ----------------------------------------------------------
+// Saving Data for Graphical Output
+// ----------------------------------------------------------
+reg=sys1.reachable;            // the reachable parts of state space of example
+reg.print("out_reachable_heater",2);  // output as a list of vertices
+
+inv=sys1.get_invariants;       // the grid of partitions explored
+inv.print("out_inv_heater",2);        // output as a list of vertices
+

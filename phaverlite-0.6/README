@@ -1,0 +1,51 @@
+Copyright 2019-2023 Enea Zaffanella <enea.zaffanella@unipr.it>
+
+PHAVerLite (PHAVer + PPLite) is a variant of PHAVer, a formal verification
+tool for computing reachability of hybrid systems. The main difference with
+respect to PHAVer, originally developed by Goran Frehse and later included
+in the SpaceEx platform, is the replacement of PPL (Parma Polyhedra Library)
+with PPLite. PHAVerLite currently provides a subset of the functionalities
+offered by PHAVer.
+
+PHAVerLite has been developed on a Linux distribution.
+In order to build it from sources, the following are needed:
+ - a C++ compiler (g++, clang++) supporting the 2017 standard
+   (starting from version 0.5; previous versions based on C++ 2011);
+ - flex and bison (recent versions);
+ - GMP, GNU MPFR and FLINT libraries (recent versions);
+ - the PPLite library (github.com/ezaffanella/PPLite);
+   each version of PHAVerLite is based on a specific version of PPLite
+   (e.g., 0.6 is based on PPLite 0.10.2).
+
+The usual build procedure (configure + make) generates:
+ - a dynamically linked executable (phaverlite);
+ - a statically linked executable (phaverlite_static).
+Note that you may need to feed `configure' with a few options to let it
+figure out where the required libraries are located in your system.
+
+Note: PHAVerLite is a stand-alone tool; it cannot be used (as is) as a
+plugin for the SpaceEx platform. It can deal with hybrid automata
+specified using a subset of PHAVer's syntax
+(see http://www-verimag.imag.fr/~frehse/phaver_web/phaver_lang.pdf).
+Note that the original syntax of PHAVer has been subject to a few
+changes, most of which are summarized here below.
+
+* PHAVer's keywords do, end, goto, sync, wait are treated as identifiers
+  in PHAVerLite; hence, they can be used as location names and/or
+  syncronization label names without causing a syntax error.
+* Parameter USE_CONVEX_HULL has been renamed to REACH_USE_CONVEX_HULL.
+* Added parameter REACH_USE_CONSTRAINT_HULL.
+* Parameter CHEAP_CONTAIN_RETURN_OTHERS has been renamed to
+  REACH_CHEAP_CONTAINS.
+* Added parameter REACH_CHEAP_CONTAINS_USE_BBOX.
+* Parameter ELAPSE_TIME has been renamed to REACH_USE_TIME_ELAPSE.
+* Parameter SEARCH_METHOD has been changed to only accept 3 values
+  (rather than the 8 values accepted by PHAVer):
+   - value 0: transaction based (was value 0 in PHAVer);
+   - value 1: topological sort of all states (was value 7 in PHAVer);
+   - value 2: topological sort of reachable states (was value 6 in PHAVer);
+     this is the value used by default.
+* Parameter REACH_ONLY_EXPLORE has been removed.
+* Parameter REFINE_LOCATION_PLANE has been removed.
+* All parameters related to simulation checking have been removed
+  (as simulation checking is no longer supported).

@@ -1,0 +1,29 @@
+* PHAVerLite 0.6
+  Requires PPLite 0.10.2 (which fixes a bug on NNC polyhedra).
+
+* PHAVerLite 0.5
+  Requires PPLite 0.8
+  New command id1.is_intersecting(id2)
+
+* PHAVerLite 0.4
+  Requires PPLite 0.7
+  Uses by default boxed polyhedra (when using sets of polyhedra).
+  New command line option -p=<POLY_KIND> enables to choose among
+  different instances of PPLite polyhedra (Poly, F_Poly, ...),
+  defaulting to Poly.
+
+* PHAVerLite 0.3.1 (fixes bug in 0.3)
+  Requires PPLite 0.6
+  Uses by default boxed polyhedra (when using sets of polyhedra).
+  New command line option -p=F_Poly enables the domain of "factored"
+  polyhedra (experimental feature, not fully optimized).
+
+* PHAVerLite 0.2.1
+  Requires PPLite 0.5.1
+  Bug corrected in Poly::parallel_affine_image()
+
+* PHAVerLite 0.2
+  Requires PPLite 0.5
+  Uses by default boxed polyhedra (when using sets of polyhedra).
+
+* PHAVerLite 0.1
