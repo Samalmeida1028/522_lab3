@@ -6,6 +6,7 @@ import multiprocessing
 
 
 
+
 def run_lab_a(num):
     start = time.time()
     print("Lab A PC= ",num)
@@ -28,29 +29,31 @@ def run_lab_c(num):
     print(f"Lab C with PC= {num} ran in {time.time()-start} seconds")
 
 
-def run_labs(num):
-    # run_lab_a(num)
-    # run_lab_b(num)
-    run_lab_c(num)
+def run_labs(num,target):
+    # print(target)
+    if('a' in target):
+        run_lab_a(num)
+    if('b' in target):
+        run_lab_b(num)
+    if('c' in target):
+        run_lab_c(num)
 
 
 
 
 def main(args):
     processes = []
-    if(len(args)<0):
-        # run_lab_a(args[0])
-        # run_lab_b(args[0])
-        run_lab_c(args[0])
-    else:
-        for i in range(3000):
-            if i%10==0:
-                lab_process = threading.Thread(target=run_labs,args=[3-(i/1000)])
-                lab_process.run()
+    subprocess.run("./clear_results.sh")
+    for i in range(int(args[0]),int(args[1])):
+        lab_process = threading.Thread(target=run_labs,args=[int(args[2])-(i/float(args[1])),args[3]])
+        lab_process.run()
+    if 'b' in args[3]:
+        subprocess.run("./graph_part_b.sh")
 
 
 
 
 
 if __name__ == "__main__":
+    print(sys.argv[1:])
     main(sys.argv[1:])
