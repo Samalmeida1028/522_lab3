@@ -6,23 +6,32 @@ a_brake:=-5.5;
 automaton vroom
    contr_var: x, v; //the position and velocity
    synclabs: brake;
-   loc accelerating: while x<=250 wait {x'==v & v'==a_accel}
-                when x==300 sync brake do {v'==v & x'==x} goto braking;
-   loc braking: while 0 <= v wait{x'==v & v' == a_brake}
+   loc accelerating: while x < 300 wait {x'==v & v'==a_accel}
+                when x>=250 sync brake do {v'==v & x'==x} goto braking;
+   loc braking: while 500>=x & 250 <= x & 0 <= v wait{x'==v & v'==a_brake}
+               // when x==500 sync brake do {v'==v & x'==x};
+                
                
    initially: accelerating & x==0 & v==0;
 end
 
 // --------------------- Analysis  begin-------------------------------------
 vroom.add_label(tau);
-pc:=5.310;
+pc:=1;
 vroom.set_partition_constraints((x,pc),(v,pc),tau); 
 
 reach=vroom.reachable;  // reached part of state space
-reach.print("out_reachable_car",2);     // output as a list of vertices
+reach.print("lab_part_c/out_reachable/out_reachable_car_1",2);
 
 inv=vroom.get_invariants; //to generate the grid of partitions explored
-inv.print("out_inv_car",2);
+inv.print("lab_part_c/out_inv/out_inv_car_1",2);
 
-cond1=vroom.{falling & x==0.6 & v==0.0};
+
+cond1=vroom.{braking & x>500};
 check1=vroom.is_reachable(cond1);
+cond2=vroom.{braking &  x <= 46.5};
+check2=vroom.is_reachable(cond2);
+cond3=vroom.{accelerating & x > 250 & v <= 40};
+check3=vroom.is_reachable(cond3);
+// cond1=vroom.{falling & x==0.6 & v==0.0};
+// check1=vroom.is_reachable(cond1);

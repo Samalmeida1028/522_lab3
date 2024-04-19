@@ -15,7 +15,7 @@ PHAVerLite 0.6: starting
   -----------------------------------------------------------------------------
 
 
-  Time in print_gen_fp_raw: 0.000 secs
+  Time in print_gen_fp_raw: 0.001 secs
   ------------------------------------
 
   Computing reachable states of bball

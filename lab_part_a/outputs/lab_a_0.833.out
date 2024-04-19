@@ -21,5 +21,5 @@ PHAVerLite 0.6: starting
   Computing reachable states of bball
   Time in get_reach_set: 0.002 secs
 cond1 is reachable.
-  Time in file lab_part_a/bouncing_ball.pha: 0.014 secs
-Time in PHAVerLite: 0.014 secs
+  Time in file lab_part_a/bouncing_ball.pha: 0.016 secs
+Time in PHAVerLite: 0.016 secs

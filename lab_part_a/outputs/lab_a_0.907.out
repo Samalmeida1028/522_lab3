@@ -1,7 +1,7 @@
 PHAVerLite 0.6: starting
   Parsing file lab_part_a/bouncing_ball.pha
   Computing reachable states of bball
-  Time in get_reach_set: 0.009 secs
+  Time in get_reach_set: 0.008 secs
 
   Printing symb. states in 13 locations in generator floating point raw format.
   -----------------------------------------------------------------------------

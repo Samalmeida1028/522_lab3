@@ -1,2 +1,4 @@
-out_inv_*
-out_reachable_*
+out_*
+out_*
+*.png
+*.out
