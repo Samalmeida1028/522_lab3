@@ -12,14 +12,14 @@ end
 
 // --------------------- Analysis  begin-------------------------------------
 bball.add_label(tau);
-pc:=2.990;
+pc:=0.010;
 bball.set_partition_constraints((x,pc),(v,pc),tau); 
 
 reach=bball.reachable;  // reached part of state space
-reach.print("lab_part_a/out_reachable/out_reachable_ball_2.990",2);
+reach.print("lab_part_a/out_reachable/out_reachable_ball_0.010",2);
 
 inv=bball.get_invariants; //to generate the grid of partitions explored
-inv.print("lab_part_a/out_inv/out_inv_ball_2.990",2);
+inv.print("lab_part_a/out_inv/out_inv_ball_0.010",2);
 
 cond1=bball.{falling & x==0.6 & v==0.0};
 check1=bball.is_reachable(cond1);

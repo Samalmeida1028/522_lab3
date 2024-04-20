@@ -43,12 +43,13 @@ def run_labs(num,target):
 
 def main(args):
     processes = []
+    print(args)
     subprocess.run("./clear_results.sh")
     for i in range(int(args[0]),int(args[1])):
-        lab_process = threading.Thread(target=run_labs,args=[int(args[2])-(i/float(args[1])),args[3]])
+        lab_process = threading.Thread(target=run_labs,args=[float(args[2])-(i/float(args[1])),args[3]])
         lab_process.run()
-    if 'b' in args[3]:
-        subprocess.run("./graph_part_b.sh")
+    if 'a' in args[3]:
+        subprocess.run("./graph_part_a.sh")
 
 
 
